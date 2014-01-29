@@ -1,7 +1,7 @@
 $(function() {
     // Initialize Parse SDK
 	// ZD 26.01.14 From parse.com first one is ApplicationID and the second one is JavaScript ID key
-	// You must have a account one parse.com the make work this exempl application
+	// You must have a account one parse.com the make work this example application
     Parse.initialize(
         '31JqtMGLuFN0GbrC07UIJXMIE8X1kKBoVvWLXJBB', 
         'EgEs2Vnfh6BRSrIeZh0Qc0lA6EcjOb4Sak3VlQsb'

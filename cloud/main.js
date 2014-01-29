@@ -51,7 +51,7 @@ app.post('/zovniMe', function(request,response) {
                     // In a later iteration of this demo, we will add these callers to
                     // a queue to wait for an available agent, but for now, we ask them
                     // to call back later
-                    twiml.say('We could not reach any agents. Please call back later sorry, the agents Almir  and Jemy will send you a sms.');
+                    twiml.say('We could not reach any agents. Please call back later sorry.');
                 }
 
                 // Send the XML response
