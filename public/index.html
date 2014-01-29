@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Speedy Loans Call Center</title>
+    <link rel="icon" type="image/png" href="img/speedy16.png">
+
+    <!-- Make things pretty -->
+    <link rel="stylesheet" type="text/css" media="all" 
+        href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="all" 
+        href="css/main.css">
+</head>
+<body>
+    <div id="login" style="display:none;">
+        <img alt="Working with Twilio cloud" src="img/WorkingSchema.png" width="600" height="600">
+        <h1><span class="red">TWILIO</span>VOIP Cloud</h1>
+        <form id="loginForm">
+            <input type="text" name="username" placeholder="Username"/>
+            <br/>
+            <input type="password" name="password" placeholder="Password"/>
+            <br/>
+            <button type="submit" class="btn btn-success btn-large">
+                Log In
+            </button>
+        </form>
+        <span class="red">E-SOFT</span> Zeki tests
+    </div>
+    
+
+    <div id="main" style="display:none;">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <a class="brand" href="/">
+                    <span class="green">Speedy</span>Loans
+                </a>
+                <button id="logout" class="btn btn-success pull-right">
+                    Log Out
+                </button>
+                <div id="welcome-text" class="pull-right">
+                    Welcome <span id="loggedInUser"></span>!
+                </div>
+            </div>
+        </div>
+
+        <div id="agentUI">
+            <p>Are you available to take calls?</p>
+            <label class="radio">
+                <input type="radio" name="available" value="yes" checked>
+                Yes!
+            </label>
+            <label class="radio">
+                <input type="radio" name="available" value="no">
+                Nope.
+            </label>
+        </div>
+    </div>
+
+    <!-- Release the JavaScripts! -->
+    <script type="text/javascript" src="static.twilio.com/libs/twiliojs/1.1/twilio.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  	<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.16.min.js"></script>
+
+    <!-- Our simple Ajax app (excuse the jQuery spaghetti) -->
+    <!-- Drive are call center -->
+    <script src="js/app.js"></script>    
+</body>
+</html>

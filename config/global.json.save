@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "CallCenter": {
+            "applicationId": "31JqtMGLuFN0GbrC07UIJXMIE8X1kKBoVvWLXJBB", 
+            "masterKey": "YVDlTnJd9byxNn9HJrcMb5pEPxxzxZK830cubLCX"
+        }, 
+        "_default": {
+            "link": "CallCenter"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.9"
+    }
+}
