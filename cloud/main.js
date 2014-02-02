@@ -9,7 +9,7 @@ var app = express();
 app.use(express.bodyParser());
 
 // Handle an HTTP request from Twilio to route a call
-app.post('/zovniMe', function(request,response) {
+app.post('/zovnime', function(request,response) {
     // Create a TwiML object which will tell Twilio how to route the call
     var twiml = new twilio.TwimlResponse();
     // Set the content type of our ultimate response
@@ -42,7 +42,7 @@ app.post('/zovniMe', function(request,response) {
                 if (agent) {
                     var agentUsername = agent.get('username');
                     twiml.dial({
-                        action:'/zovniMe?agentsTried='+agentUsername+','+agentTriedString
+                        action:'/zovnime?agentsTried='+agentUsername+','+agentTriedString
                     }, function(parentNode) {
                         parentNode.client(agentUsername);
                     });
@@ -51,7 +51,7 @@ app.post('/zovniMe', function(request,response) {
                     // In a later iteration of this demo, we will add these callers to
                     // a queue to wait for an available agent, but for now, we ask them
                     // to call back later
-                    twiml.say('We could not reach any agents. Please call back later sorry.');
+                    twiml.say('We could not reach any agents. Please call back later sorry. Agents Almir and Djemi are occupate');
                 }
 
                 // Send the XML response
@@ -79,6 +79,7 @@ Parse.Cloud.define('generateToken', function(request, response) {
 
         // return the token to the client
         response.success(capability.generate());
+        
     } else {
         response.error('Login Required.');
     }
