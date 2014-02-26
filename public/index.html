@@ -1,69 +1,136 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Speedy Loans Call Center</title>
-    <link rel="icon" type="image/png" href="img/speedy16.png">
+	<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
 
-    <!-- Make things pretty -->
-    <link rel="stylesheet" type="text/css" media="all" 
-        href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" media="all" 
-        href="css/main.css">
-</head>
-<body>
-    <div id="login" style="display:none;">
-        <img alt="Working with Twilio cloud" src="img/WorkingSchema.png" width="600" height="600">
-        <h1><span class="red">TWILIO</span>VOIP Cloud</h1>
-        <form id="loginForm">
-            <input type="text" name="username" placeholder="Username"/>
-            <br/>
-            <input type="password" name="password" placeholder="Password"/>
-            <br/>
-            <button type="submit" class="btn btn-success btn-large">
-                Log In
-            </button>
-        </form>
-        <span class="red">E-SOFT</span> 
-        <br>
-        Original program CallCenter was made by Kevin Whinnery
-    </div>
-    
+    <title>Call - Center for fun</title>
 
-    <div id="main" style="display:none;">
-        <div class="navbar">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="css/main.css">
+    <!-- If you want the popop apears you must use all about fundation -->
+    <link rel="stylesheet" type="text/css" href="css/foundation.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="css/signin.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	</head>
+	<body>
+	    <div id="container" class="container" style="display:none;">
+	        <form id="form-signin" class="form-signin" role="form">
+	        	<h2 class="form-signin-heading">Please sign in</h2>
+	            <input class="form-control" type="text" name="username" placeholder="Username" required autofocus/>
+	            <input class="form-control" type="password" name="password" placeholder="Password" required/>
+	             <label class="checkbox">
+		          <input type="checkbox" value="remember-me"> Remember me
+		        </label>
+	            <button type="submit" class="btn btn-lg btn-primary btn-block">
+	                Log In
+	            </button>
+	        </form>
+	    </div>
+	    
+	
+	    <div id="main" style="display:none;">
+	        
+	        <div class="navbar">
+	        
             <div class="navbar-inner">
-                <a class="brand" href="/">
-                    <span class="green">Speedy</span>Loans
-                </a>
-                <button id="logout" class="btn btn-success pull-right">
-                    Log Out
-                </button>
-                <div id="welcome-text" class="pull-right">
-                    Welcome <span id="loggedInUser"></span>!
-                </div>
-            </div>
-        </div>
-
-        <div id="agentUI">
-            <p>Are you available to take calls?</p>
-            <label class="radio">
-                <input type="radio" name="available" value="yes" checked>
-                Yes!
-            </label>
-            <label class="radio">
-                <input type="radio" name="available" value="no">
-                Nope.
-            </label>
-        </div>
-    </div>
-
-    <!-- Release the JavaScripts! -->
-    <script type="text/javascript" src="http://static.twilio.com/libs/twiliojs/1.1/twilio.min.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-  	<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.16.min.js"></script>
-
-    <!-- Our simple Ajax app (excuse the jQuery spaghetti) -->
-    <!-- Drive are call center -->
-    <script src="js/app.js"></script>    
-</body>
+	                <a class="brand" href="/">
+	                    <span class="green">Call</span>Center Frick-Phone <span class="green">VOIP</span>
+	                </a>
+	                <button id="logout" class="btn btn-lg btn-primary btn-block" style="width:90px">
+	                    Log Out
+	                </button>
+	                <div id="welcome-text" class="pull-right">
+	                    Welcome <span id="loggedInUser"></span>!
+	                </div>
+	           
+	           <div>
+			      <div class="panel">
+			        <h5>Menu</h5>
+			        <a data-reveal-id="phone-call" class="btn btn-lg btn-success">Phone</a>
+			      </div>
+	            </div>
+  			
+  
+	            <!-- Add a phone call dialog -->
+	            <div id="phone-call" class="reveal-modal" style="top: 100px; opacity: 1; visibility: hidden; display: none; width: 400px;">
+			    <h2>Frick-Phone VOIP</h2>
+			    <form id="phoneDial">
+			        <label for="quoteText">Phone Number:</label>
+			        <textarea id="write"></textarea>
+			        <br>
+			        
+					<ul id="phoneNumbers" style="list-style-type:none">
+						<li>
+							<button type="button" class="btn btn-lg btn-info">1</button>
+							<button type="button" class="btn btn-lg btn-info">2</button>
+			                <button type="button" class="btn btn-lg btn-info">3</button>
+						</li>
+						<li>
+							<button type="button" class="btn btn-lg btn-info">4</button>
+							<button type="button" class="btn btn-lg btn-info">5</button>
+			                <button type="button" class="btn btn-lg btn-info">6</button>
+						</li>
+						<li>
+							<button type="button" class="btn btn-lg btn-info">7</button>
+							<button type="button" class="btn btn-lg btn-info">8</button>
+			                <button type="button" class="btn btn-lg btn-info">9</button>
+						</li>
+						<li>
+							<button value="p*" type="button" class="btn btn-lg btn-link">&nbsp;*</button>
+			        		<button value="p0" type="button" class="btn btn-lg btn-info">0</button>
+			        		<button value="p#" type="button" class="btn btn-lg btn-link">&nbsp;#</button>
+						</li>
+						<li>
+							<button type="reset" value="Reset" class="btn btn-lg btn-danger">Reset</button>
+			       			<button value="Call" type="submit" class="btn btn-lg btn-success">Call</button>
+						</li>
+					</ul>
+			    </form>
+			  </div>
+			  
+			      	  <div id="agentUI">
+			            <p>Are you available to take calls?</p>
+			            <label class="radio">
+			                <input type="radio" name="available" value="yes" checked>
+			                Yes!
+			            </label>
+			            <label class="radio">
+			                <input type="radio" name="available" value="no">
+			                Nope.
+			            </label>
+			        </div>
+	        
+	        	</div>
+	    	</div>
+	    </div>
+	
+	    <!-- Release the JavaScripts! -->
+	    <script type="text/javascript" src="http://static.twilio.com/libs/twiliojs/1.1/twilio.min.js"></script>
+	    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	  	<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.16.min.js"></script>
+	  	<script type="text/javascript" src="js/modernizr.foundation.js"></script>
+	  	<script type="text/javascript" src="js/jquery.js"></script>
+	  	<script type="text/javascript" src="js/foundation.min.js"></script>
+	
+	    <!-- Our simple Ajax app (excuse the jQuery spaghetti) -->
+	    <!-- Drive are call center -->
+	    <script src="js/app.js"></script>    
+	</body>
 </html>
