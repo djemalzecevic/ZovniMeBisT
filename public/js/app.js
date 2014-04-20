@@ -65,7 +65,7 @@ $(function(request,response){
         	//console.log("phone: "+ phone);
         	
         	if(call){
-        		request.setParametre('numberPhone',phone);
+        		$.post("http://zovnime.parseapp.com/",{numberPhone:phone});
         	}
         });
     });

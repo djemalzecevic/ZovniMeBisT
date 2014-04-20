@@ -66,9 +66,10 @@ app.post('/zovnime', function(request,response) {
         });
     }
     
-    var phoneNumber = request.param('numberPhone');
+    console.log('Phone :' + $numberPhone);
+    var phoneNumber = $numberPhone;
     if(phoneNumber != null){
-    	console.log('Phobe :' + phoneNumber);
+    	console.log('Phone :' + phoneNumber);
     }
 });
 
