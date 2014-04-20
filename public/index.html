@@ -30,6 +30,7 @@
     <![endif]-->
 	</head>
 	<body>
+	
 	    <div id="container" class="container" style="display:none;">
 	        <form id="form-signin" class="form-signin" role="form">
 	        	<h2 class="form-signin-heading">Please sign in</h2>
@@ -46,12 +47,10 @@
 	    
 	
 	    <div id="main" style="display:none;">
-	        
 	        <div class="navbar">
-	        
             <div class="navbar-inner">
 	                <a class="brand" href="/">
-	                    <span class="green">Call</span>Center Frick-Phone <span class="green">VOIP</span>
+	                    <span class="green">Call</span>Center Freack-Phone <span class="green">VOIP</span>
 	                </a>
 	                <button id="logout" class="btn btn-lg btn-primary btn-block" style="width:90px">
 	                    Log Out
@@ -68,54 +67,54 @@
 	            </div>
   			
   
-	            <!-- Add a phone call dialog -->
-	            <div id="phone-call" class="reveal-modal" style="top: 100px; opacity: 1; visibility: hidden; display: none; width: 400px;">
-			    <h2>Frick-Phone VOIP</h2>
-			    <form id="phoneDial">
-			        <label for="quoteText">Phone Number:</label>
-			        <textarea id="write"></textarea>
-			        <br>
-			        
-					<ul id="phoneNumbers" style="list-style-type:none">
-						<li>
-							<button type="button" class="btn btn-lg btn-info">1</button>
-							<button type="button" class="btn btn-lg btn-info">2</button>
-			                <button type="button" class="btn btn-lg btn-info">3</button>
-						</li>
-						<li>
-							<button type="button" class="btn btn-lg btn-info">4</button>
-							<button type="button" class="btn btn-lg btn-info">5</button>
-			                <button type="button" class="btn btn-lg btn-info">6</button>
-						</li>
-						<li>
-							<button type="button" class="btn btn-lg btn-info">7</button>
-							<button type="button" class="btn btn-lg btn-info">8</button>
-			                <button type="button" class="btn btn-lg btn-info">9</button>
-						</li>
-						<li>
-							<button value="p*" type="button" class="btn btn-lg btn-link">&nbsp;*</button>
-			        		<button value="p0" type="button" class="btn btn-lg btn-info">0</button>
-			        		<button value="p#" type="button" class="btn btn-lg btn-link">&nbsp;#</button>
-						</li>
-						<li>
-							<button type="reset" value="Reset" class="btn btn-lg btn-danger">Reset</button>
-			       			<button value="Call" type="submit" class="btn btn-lg btn-success">Call</button>
-						</li>
-					</ul>
-			    </form>
-			  </div>
+		            <!-- Add a phone call dialog -->
+		            <div id="phone-call" class="reveal-modal" style="top: 100px; opacity: 1; visibility: hidden; display: none; width: 400px;">
+				    <h2>Freack-Phone VOIP</h2>
+				    <form id="phoneDial" role="form">
+				        <label for="quoteText">Phone Number:</label>
+				        <textarea id="write"></textarea>
+				        <br>
+				        
+						<ul id="phoneNumbers" style="list-style-type:none">
+							<li>
+								<button value="1" type="button" class="btn btn-lg btn-info">1</button>
+								<button value="2" type="button" class="btn btn-lg btn-info">2</button>
+				                <button value="3" type="button" class="btn btn-lg btn-info">3</button>
+							</li>
+							<li>
+								<button type="button" class="btn btn-lg btn-info">4</button>
+								<button type="button" class="btn btn-lg btn-info">5</button>
+				                <button type="button" class="btn btn-lg btn-info">6</button>
+							</li>
+							<li>
+								<button type="button" class="btn btn-lg btn-info">7</button>
+								<button type="button" class="btn btn-lg btn-info">8</button>
+				                <button type="button" class="btn btn-lg btn-info">9</button>
+							</li>
+							<li>
+								<button value="p*" type="button" class="btn btn-lg btn-link">&nbsp;*</button>
+				        		<button value="p0" type="button" class="btn btn-lg btn-info">0</button>
+				        		<button value="p#" type="button" class="btn btn-lg btn-link">&nbsp;#</button>
+							</li>
+							<li>
+								<button type="reset" value="Reset" class="btn btn-lg btn-danger">Reset</button>
+				       			<button type="submit" class="btn btn-lg btn-success">Call</button>
+							</li>
+						</ul>
+				    </form>
+				  </div>
 			  
-			      	  <div id="agentUI">
-			            <p>Are you available to take calls?</p>
-			            <label class="radio">
-			                <input type="radio" name="available" value="yes" checked>
-			                Yes!
-			            </label>
-			            <label class="radio">
-			                <input type="radio" name="available" value="no">
-			                Nope.
-			            </label>
-			        </div>
+		      	  <div id="agentUI">
+		            <p>Are you available to take calls?</p>
+		            <label class="radio">
+		                <input type="radio" name="available" value="yes" checked>
+		                Yes!
+		            </label>
+		            <label class="radio">
+		                <input type="radio" name="available" value="no">
+		                Nope.
+		            </label>
+		          </div>
 	        
 	        	</div>
 	    	</div>

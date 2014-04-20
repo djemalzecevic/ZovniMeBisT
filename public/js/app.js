@@ -37,24 +37,36 @@
 
 })(jQuery, this);
 
-$(function(){
+
+//ZD fonction clavier du téléphone
+$(function(request,response){
     var $write = $('#write');
-    
+    var phone = "";
+    var myPhone = "0014846964711";
+    var call = false;
     $(document).ready(function() {
         $('button').click(function() {
         	var $this = $(this),
             character = $this.html();
+        	var html = $write.html();
         	
         	// Delete
         	if (character == 'Reset' ) {
-        	    var html = $write.html();
-        	     
         	    $write.html(html.substr(0, html.length - 1));
         	    return false;
+        	} else if (character == 'Call'){
+        		character = "";
+        		call = true;
         	}
         	
-        	
         	$write.html($write.html() + character);
+        	phone = phone + character;
+        	
+        	//console.log("phone: "+ phone);
+        	
+        	if(call){
+        		request.setParametre('numberPhone',phone);
+        	}
         });
     });
 });
@@ -64,6 +76,7 @@ function closeModal() {
   $("#add-quote").trigger("reveal:close");
 }
 
+// cette fonction initialise 
 $(function() {
     // Initialize Parse SDK
 	// ZD 26.01.14 From parse.com first one is ApplicationID and the second one is JavaScript ID key

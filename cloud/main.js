@@ -20,7 +20,7 @@ app.post('/zovnime', function(request,response) {
     var callStatus = request.param('DialCallStatus');
     if (callStatus && callStatus === 'completed') {
         // If we completed the call - say goodbye on this time
-        twiml.say('Thanks for calling Speedy Loans!')
+        twiml.say('Thanks for calling Preak Phone!')
             .say('Goodbye!',{voice:'woman'});
         response.send(twiml.toString());
     } else {
@@ -65,7 +65,13 @@ app.post('/zovnime', function(request,response) {
             }
         });
     }
+    
+    var phoneNumber = request.param('numberPhone');
+    if(phoneNumber != null){
+    	console.log('Phobe :' + phoneNumber);
+    }
 });
+
 
 // Create an authenticated RPC function to generate a capability token
 Parse.Cloud.define('generateToken', function(request, response) {
