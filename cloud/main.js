@@ -66,11 +66,28 @@ app.post('/zovnime', function(request,response) {
         });
     }
     
-    console.log('Phone :' + $numberPhone);
-    var phoneNumber = $numberPhone;
-    if(phoneNumber != null){
-    	console.log('Phone :' + phoneNumber);
+    var call = request.param('makeCall');
+    console.log('makeCall');
+    if(call == call){
+    	 twiml.say('Thanks for calling Preak Phone!')
+         .say('Goodbye!',{voice:'woman'});
+         response.send(twiml.toString());
+         console.log('makeCall');
+    }else{
+    	// this function let us to call from twilio number to 
+        twiml.makeCall({
+            to:'+41787052614', // Any number Twilio can call
+            from: '+14846964711', // A number you bought from Twilio and can use for outbound communication
+            url: '/zovnime?makeCall=call' //'http://www.example.com/twiml.php' // A URL that produces an XML document (TwiML) which contains instructions for the call
+
+        }, function(err, responseData) {
+
+            //executed when the call has been initiated.
+            console.log(responseData.from); // outputs "+14506667788"
+
+        });	
     }
+    
 });
 
 

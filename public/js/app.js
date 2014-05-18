@@ -37,12 +37,19 @@
 
 })(jQuery, this);
 
+function erreurAjax(xhr, etat, erreur) {
+	// avec un message dans l'element #resultat
+	// traitement du resultat du chargement via Ajax
+	var message = 'Anomalie : ' + (etat?etat+',':'') +
+	'HTTP ' + xhr.status + ' ' + xhr.statusText + ' ' + ( ('undefined' != typeof erreur) ?
+	    ', ' + erreur.toString() : '' );
+	 $('#resultat').append('<p>' + message + '</p>');
+}
 
 //ZD fonction clavier du téléphone
 $(function(request,response){
     var $write = $('#write');
     var phone = "";
-    var myPhone = "0014846964711";
     var call = false;
     $(document).ready(function() {
         $('button').click(function() {
@@ -62,14 +69,25 @@ $(function(request,response){
         	$write.html($write.html() + character);
         	phone = phone + character;
         	
-        	//console.log("phone: "+ phone);
-        	
         	if(call){
-        		$.post("http://zovnime.parseapp.com/",{numberPhone:phone});
+        		call(phone);
         	}
         });
     });
 });
+
+function call(phone){
+	var myPhone = "+14846964711";
+	
+	// Create a TwiML object which will tell Twilio how to route the call
+    var twiml = new twilio.TwimlResponse();
+    // Set the content type of our ultimate response
+    response.type('text/xml');
+    response.say("A customer at the number " + phone + " is colling");
+    request.dial(phone);
+    response.send(twiml.toString());
+    console.log("phone " + phone);
+}
 
 function closeModal() {
   // The popup is powered by the Reveal plugin
