@@ -70,22 +70,14 @@ $(function(request,response){
         	phone = phone + character;
         	
         	if(call){
-        		call(phone);
+        		makeCall(phone);
+        		
         	}
         });
     });
 });
 
-function call(phone){
-	var myPhone = "+14846964711";
-	
-	// Create a TwiML object which will tell Twilio how to route the call
-    var twiml = new twilio.TwimlResponse();
-    // Set the content type of our ultimate response
-    response.type('text/xml');
-    response.say("A customer at the number " + phone + " is colling");
-    request.dial(phone);
-    response.send(twiml.toString());
+function makeCall(phone){
     console.log("phone " + phone);
 }
 
@@ -125,7 +117,7 @@ $(function() {
                         Twilio.Device.setup(token);
                     },
                     error: function(message) {
-                        alert('token generation failed: '+message);
+                        alert('token generation failed: ' + message);
                     }
                 });
             },
@@ -199,6 +191,24 @@ $(function() {
 
     // Handle an inbound call in the browser
     Twilio.Device.incoming(function(connection) {
+        // Accept the incoming call automatically
+        connection.accept();
+
+        // update status as busy
+        var currentUser = Parse.User.current();
+        currentUser.set('available', false);
+        currentUser.save(null, {
+            success: function(user) {
+                // nothing for now
+            },
+            error: function() {
+                alert('There was an error updating your status.');
+            }
+        });
+    });
+    
+ // Handle an outbound call in the browser
+    Twilio.Device.outcoming(function(connection) {
         // Accept the incoming call automatically
         connection.accept();
 

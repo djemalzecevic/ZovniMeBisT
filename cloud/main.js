@@ -66,7 +66,16 @@ app.post('/zovnime', function(request,response) {
         });
     }
     
-    var call = request.param('makeCall');
+});
+
+
+app.post('/zovnime?makeCall', function(request,response){
+	// Create a TwiML object which will tell Twilio how to route the call
+    var twiml = new twilio.TwimlResponse();
+    // Set the content type of our ultimate response
+    response.type('text/xml');
+    
+	var call = request.param('makeCall');
     console.log('makeCall');
     if(call == call){
     	 twiml.say('Thanks for calling Preak Phone!')
@@ -86,10 +95,10 @@ app.post('/zovnime', function(request,response) {
             console.log(responseData.from); // outputs "+14506667788"
 
         });	
+        twiml.say('In one moment the human person wil hang up to you, thanks.');
+        response.send(twiml.toString());
     }
-    
 });
-
 
 // Create an authenticated RPC function to generate a capability token
 Parse.Cloud.define('generateToken', function(request, response) {
@@ -100,6 +109,8 @@ Parse.Cloud.define('generateToken', function(request, response) {
             config.twilio.authToken
         );
         capability.allowClientIncoming(request.user.get('username'));
+        
+        capability.allowClientOutcoming(request.user.get('username'));
 
         // return the token to the client
         response.success(capability.generate());
