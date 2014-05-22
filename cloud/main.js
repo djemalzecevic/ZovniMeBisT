@@ -109,8 +109,8 @@ Parse.Cloud.define('generateToken', function(request, response) {
             config.twilio.authToken
         );
         capability.allowClientIncoming(request.user.get('username'));
-        
-        capability.allowClientOutcoming(request.user.get('username'));
+
+        capability.allowClientOutgoing(request.user.get('username'));
 
         // return the token to the client
         response.success(capability.generate());

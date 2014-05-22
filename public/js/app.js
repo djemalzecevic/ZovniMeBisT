@@ -208,7 +208,7 @@ $(function() {
     });
     
  // Handle an outbound call in the browser
-    Twilio.Device.outcoming(function(connection) {
+    Twilio.Device.outbound(function(connection) {
         // Accept the incoming call automatically
         connection.accept();
 
