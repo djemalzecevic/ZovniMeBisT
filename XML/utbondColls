@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    <Say>A customer at the number +41787052614 is calling</Say>
+    <Dial>+41787052614</Dial>
+</Response>

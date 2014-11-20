@@ -10,12 +10,14 @@ app.use(express.bodyParser());
 
 // Handle an HTTP request from Twilio to route a call
 app.post('/zovnime', function(request,response) {
-    // Create a TwiML object which will tell Twilio how to route the call
+
+     // Create a TwiML object which will tell Twilio how to route the call
     var twiml = new twilio.TwimlResponse();
+
     // Set the content type of our ultimate response
     response.type('text/xml');
-
-    // If this is a subsequent request from Twilio, figure out what happened
+     
+      // If this is a subsequent request from Twilio, figure out what happened
     // on the last call.
     var callStatus = request.param('DialCallStatus');
     if (callStatus && callStatus === 'completed') {
@@ -65,40 +67,9 @@ app.post('/zovnime', function(request,response) {
             }
         });
     }
-    
+
 });
 
-
-app.post('/zovnime?makeCall', function(request,response){
-	// Create a TwiML object which will tell Twilio how to route the call
-    var twiml = new twilio.TwimlResponse();
-    // Set the content type of our ultimate response
-    response.type('text/xml');
-    
-	var call = request.param('makeCall');
-    console.log('makeCall');
-    if(call == call){
-    	 twiml.say('Thanks for calling Preak Phone!')
-         .say('Goodbye!',{voice:'woman'});
-         response.send(twiml.toString());
-         console.log('makeCall');
-    }else{
-    	// this function let us to call from twilio number to 
-        twiml.makeCall({
-            to:'+41787052614', // Any number Twilio can call
-            from: '+14846964711', // A number you bought from Twilio and can use for outbound communication
-            url: '/zovnime?makeCall=call' //'http://www.example.com/twiml.php' // A URL that produces an XML document (TwiML) which contains instructions for the call
-
-        }, function(err, responseData) {
-
-            //executed when the call has been initiated.
-            console.log(responseData.from); // outputs "+14506667788"
-
-        });	
-        twiml.say('In one moment the human person wil hang up to you, thanks.');
-        response.send(twiml.toString());
-    }
-});
 
 // Create an authenticated RPC function to generate a capability token
 Parse.Cloud.define('generateToken', function(request, response) {
@@ -109,8 +80,10 @@ Parse.Cloud.define('generateToken', function(request, response) {
             config.twilio.authToken
         );
         capability.allowClientIncoming(request.user.get('username'));
+        console.log('capability.allowClientIncoming');
 
         capability.allowClientOutgoing(request.user.get('username'));
+        console.log('capability.allowClientOutgoing');
 
         // return the token to the client
         response.success(capability.generate());
@@ -119,6 +92,7 @@ Parse.Cloud.define('generateToken', function(request, response) {
         response.error('Login Required.');
     }
 });
+
 
 // start express dynamic web app
 app.listen();

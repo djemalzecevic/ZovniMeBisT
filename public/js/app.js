@@ -68,16 +68,15 @@ $(function(request,response){
         	
         	$write.html($write.html() + character);
         	phone = phone + character;
-        	
+            	
         	if(call){
-        		makeCall(phone);
-        		
+        		sendRequest(phone);
         	}
         });
     });
 });
 
-function makeCall(phone){
+function sendRequest(phone){
     console.log("phone " + phone);
 }
 
@@ -114,7 +113,7 @@ $(function() {
                     success: function(token) {
                         // Configure our soft phone with a capability token which allows
                         // for incoming phone calls.
-                        Twilio.Device.setup(token);
+                        Twilio.Device.setup(token,{ debug: false, rtc: true });
                     },
                     error: function(message) {
                         alert('token generation failed: ' + message);
@@ -191,24 +190,6 @@ $(function() {
 
     // Handle an inbound call in the browser
     Twilio.Device.incoming(function(connection) {
-        // Accept the incoming call automatically
-        connection.accept();
-
-        // update status as busy
-        var currentUser = Parse.User.current();
-        currentUser.set('available', false);
-        currentUser.save(null, {
-            success: function(user) {
-                // nothing for now
-            },
-            error: function() {
-                alert('There was an error updating your status.');
-            }
-        });
-    });
-    
- // Handle an outbound call in the browser
-    Twilio.Device.outbound(function(connection) {
         // Accept the incoming call automatically
         connection.accept();
 
